@@ -1,5 +1,4 @@
-module auth_service
-
+module github.com/prankevich/Auth_service
 go 1.24
 
 require (

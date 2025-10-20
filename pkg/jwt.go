@@ -1,8 +1,8 @@
 package pkg
 
 import (
-	"auth_service/internal/domain"
 	"fmt"
+	"github.com/prankevich/Auth_service/internal/domain"
 
 	"os"
 	"time"

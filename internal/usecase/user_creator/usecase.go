@@ -1,13 +1,13 @@
 package usercreater
 
 import (
-	"auth_service/internal/config"
-	"auth_service/internal/domain"
-	"auth_service/internal/errs"
-	"auth_service/internal/port/driven"
-	"auth_service/utils"
 	"context"
 	"errors"
+	"github.com/prankevich/Auth_service/internal/config"
+	"github.com/prankevich/Auth_service/internal/domain"
+	"github.com/prankevich/Auth_service/internal/errs"
+	"github.com/prankevich/Auth_service/internal/port/driven"
+	"github.com/prankevich/Auth_service/utils"
 )
 
 type UseCase struct {

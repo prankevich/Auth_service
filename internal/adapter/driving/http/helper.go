@@ -1,9 +1,9 @@
 package http
 
 import (
-	"auth_service/internal/domain"
-	"auth_service/pkg"
 	"errors"
+	"github.com/prankevich/Auth_service/internal/domain"
+	"github.com/prankevich/Auth_service/pkg"
 	"strings"
 
 	"github.com/gin-gonic/gin"

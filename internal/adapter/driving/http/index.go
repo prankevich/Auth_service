@@ -1,8 +1,8 @@
 package http
 
 import (
-	"auth_service/internal/config"
-	"auth_service/internal/usecase"
+	"github.com/prankevich/Auth_service/internal/config"
+	"github.com/prankevich/Auth_service/internal/usecase"
 	"net/http"
 	"time"
 

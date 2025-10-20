@@ -1,10 +1,10 @@
 package http
 
 import (
-	"auth_service/internal/domain"
-	"auth_service/internal/errs"
-	"auth_service/pkg"
 	"errors"
+	"github.com/prankevich/Auth_service/internal/domain"
+	"github.com/prankevich/Auth_service/internal/errs"
+	"github.com/prankevich/Auth_service/pkg"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

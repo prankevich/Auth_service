@@ -1,8 +1,8 @@
 package dbstore
 
 import (
-	"auth_service/internal/domain"
 	"context"
+	"github.com/prankevich/Auth_service/internal/domain"
 	"os"
 	"time"
 

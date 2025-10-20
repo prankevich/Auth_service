@@ -1,8 +1,8 @@
 package usecase
 
 import (
-	"auth_service/internal/domain"
 	"context"
+	"github.com/prankevich/Auth_service/internal/domain"
 )
 
 type UserCreater interface {

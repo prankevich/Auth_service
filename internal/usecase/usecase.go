@@ -1,11 +1,11 @@
 package usecase
 
 import (
-	"auth_service/internal/adapter/driven/dbstore"
-	"auth_service/internal/config"
-	"auth_service/internal/port/usecase"
-	authenticate "auth_service/internal/usecase/authenticator"
-	usercreater "auth_service/internal/usecase/user_creator"
+	"github.com/prankevich/Auth_service/internal/adapter/driven/dbstore"
+	"github.com/prankevich/Auth_service/internal/config"
+	"github.com/prankevich/Auth_service/internal/port/usecase"
+	authenticate "github.com/prankevich/Auth_service/internal/usecase/authenticator"
+	usercreater "github.com/prankevich/Auth_service/internal/usecase/user_creator"
 )
 
 type UseCases struct {

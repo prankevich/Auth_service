@@ -1,9 +1,9 @@
 package dbstore
 
 import (
-	"auth_service/internal/errs"
 	"database/sql"
 	"errors"
+	"github.com/prankevich/Auth_service/internal/errs"
 )
 
 func (u *UserStorage) translateError(err error) error {

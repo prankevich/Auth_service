@@ -1,11 +1,11 @@
 package bootstrap
 
 import (
-	"auth_service/internal/config"
-	"auth_service/internal/usecase"
+	"github.com/prankevich/Auth_service/internal/config"
+	"github.com/prankevich/Auth_service/internal/usecase"
 	"net/http"
 
-	http2 "auth_service/internal/adapter/driving/http"
+	http2 "github.com/prankevich/Auth_service/internal/adapter/driving/http"
 
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/stdlib"

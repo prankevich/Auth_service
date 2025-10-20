@@ -1,9 +1,9 @@
 package main
 
 import (
-	"auth_service/internal/bootstrap"
-	"auth_service/internal/config"
 	"context"
+	"github.com/prankevich/Auth_service/internal/bootstrap"
+	"github.com/prankevich/Auth_service/internal/config"
 	"os"
 	"os/signal"
 

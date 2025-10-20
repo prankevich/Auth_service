@@ -1,11 +1,12 @@
 package bootstrap
 
 import (
-	"auth_service/internal/adapter/driven/dbstore"
-	"auth_service/internal/config"
-	"auth_service/internal/usecase"
 	"context"
 	"fmt"
+	"github.com/prankevich/Auth_service/internal/adapter/driven/dbstore"
+
+	"github.com/prankevich/Auth_service/internal/config"
+	"github.com/prankevich/Auth_service/internal/usecase"
 )
 
 func initLayers(cfg config.Config) *App {

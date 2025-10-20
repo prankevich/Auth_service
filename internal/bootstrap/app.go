@@ -1,9 +1,9 @@
 package bootstrap
 
 import (
-	"auth_service/internal/config"
 	"context"
 	"errors"
+	"github.com/prankevich/Auth_service/internal/config"
 
 	"net/http"
 	"time"
