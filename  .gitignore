@@ -1,0 +1,7 @@
+
+*.exe
+*.out
+.env
+config.go
+.xml
+.idea/
