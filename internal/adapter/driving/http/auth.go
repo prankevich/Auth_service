@@ -2,15 +2,23 @@ package http
 
 import (
 	"errors"
-	"github.com/prankevich/Auth_service/internal/domain"
-	"github.com/prankevich/Auth_service/internal/errs"
-	"github.com/prankevich/Auth_service/pkg"
+	"github.com/prankevich/Auth_service/pkg/notification"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/prankevich/Auth_service/internal/domain"
+	"github.com/prankevich/Auth_service/internal/errs"
+	"github.com/prankevich/Auth_service/pkg"
 )
 
 type SignUpRequest struct {
+	FullName string `json:"full_name"`
+	Username string `json:"username"`
+	Password string `json:"password"`
+	Email    string `json:"email"`
+}
+
+type Message struct {
 	FullName string `json:"full_name"`
 	Username string `json:"username"`
 	Password string `json:"password"`
@@ -40,7 +48,24 @@ func (s *Server) SignUp(c *gin.Context) {
 		FullName: input.FullName,
 		Username: input.Username,
 		Password: input.Password,
+		Email:    input.Email,
 	}); err != nil {
+		s.handleError(c, err)
+		return
+	}
+
+	// Создаём email-уведомление через фабрику
+	notif, err := notification.NewEmailNotification(
+		input.Email,
+		"Добро пожаловать!",
+		"Спасибо за регистрацию, "+input.FullName,
+	)
+	if err != nil {
+		s.handleError(c, err)
+		return
+	}
+
+	if err := s.producer.Send(c, notif); err != nil {
 		s.handleError(c, err)
 		return
 	}

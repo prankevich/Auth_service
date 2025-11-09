@@ -2,6 +2,7 @@ package driven
 
 import (
 	"context"
+
 	"github.com/prankevich/Auth_service/internal/domain"
 )
 

@@ -3,6 +3,7 @@ package authenticate
 import (
 	"context"
 	"errors"
+
 	"github.com/prankevich/Auth_service/internal/config"
 	"github.com/prankevich/Auth_service/internal/domain"
 	"github.com/prankevich/Auth_service/internal/errs"
@@ -23,7 +24,6 @@ func New(cfg *config.Config, userStorage driven.UserStorage) *UseCase {
 }
 
 func (u *UseCase) Authenticate(ctx context.Context, user domain.User) (int, domain.Role, error) {
-	// проверить существует ли пользователь с таким username
 	userFromDB, err := u.userStorage.GetUserByUsername(ctx, user.Username)
 	if err != nil {
 		if !errors.Is(err, errs.ErrNotfound) {
@@ -32,8 +32,6 @@ func (u *UseCase) Authenticate(ctx context.Context, user domain.User) (int, doma
 
 		return 0, "", err
 	}
-
-	// за хэшировать пароль, который получили от пользователя
 	user.Password, err = utils.GenerateHash(user.Password)
 	if err != nil {
 		return 0, "", err

@@ -3,6 +3,7 @@ package dbstore
 import (
 	"database/sql"
 	"errors"
+
 	"github.com/prankevich/Auth_service/internal/errs"
 )
 

@@ -3,6 +3,10 @@ package bootstrap
 import (
 	"context"
 	"errors"
+	_ "errors"
+	"github.com/prankevich/Auth_service/internal/usecase"
+	"github.com/prankevich/Auth_service/pkg/notification"
+
 	"github.com/prankevich/Auth_service/internal/config"
 
 	"net/http"
@@ -14,10 +18,11 @@ const gracefulDeadline = 5 * time.Second
 type App struct {
 	cfg      config.Config
 	rest     *http.Server
+	useCases *usecase.UseCases
 	teardown []func()
 }
 
-func New(cfg config.Config) *App {
+func New(cfg config.Config, producer notification.Producer) *App {
 	app := initLayers(cfg)
 
 	return app
@@ -39,4 +44,7 @@ func (app *App) Run(ctx context.Context) {
 
 func (app *App) HTTPHandler() http.Handler {
 	return app.rest.Handler
+}
+func (app *App) UseCases() *usecase.UseCases {
+	return app.useCases
 }

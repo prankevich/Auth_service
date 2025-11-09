@@ -2,9 +2,10 @@ package dbstore
 
 import (
 	"context"
-	"github.com/prankevich/Auth_service/internal/domain"
 	"os"
 	"time"
+
+	"github.com/prankevich/Auth_service/internal/domain"
 
 	"github.com/rs/zerolog"
 
@@ -22,11 +23,11 @@ func NewUserStorage(db *sqlx.DB) *UserStorage {
 type User struct {
 	ID        int       `db:"id"`
 	FullName  string    `db:"full_name"`
-	Username  string    `db:"username"`
+	Username  string    `db:"user_name"`
 	Password  string    `db:"password"`
 	Role      string    `db:"role"`
 	CreatedAt time.Time `db:"created_at"`
-	UpdatedAt time.Time `db:"updated_at"`
+	UpdatedAt time.Time `db:"update_at"`
 }
 
 func (u *User) ToDomain() *domain.User {
@@ -56,7 +57,7 @@ func (u *UserStorage) CreateUser(ctx context.Context, user domain.User) (err err
 	dbUser.FromDomain(user)
 
 	logger := zerolog.New(os.Stdout).With().Timestamp().Str("func_name", "repository.CreateUser").Logger()
-	_, err = u.db.ExecContext(ctx, `INSERT INTO users (full_name, username, password, role)
+	_, err = u.db.ExecContext(ctx, `INSERT INTO users (full_name, user_name, password, role)
 					VALUES ($1, $2, $3, $4)`,
 		dbUser.FullName,
 		dbUser.Username,
@@ -75,7 +76,7 @@ func (u *UserStorage) GetUserByID(ctx context.Context, id int) (domain.User, err
 
 	var dbUser User
 	if err := u.db.GetContext(ctx, &dbUser, `
-		SELECT id, full_name, username, password, role, created_at, updated_at 
+		SELECT id, full_name, user_name, password, role, created_at, update_at 
 		FROM users
 		WHERE id = $1`, id); err != nil {
 		logger.Err(err).Msg("error selecting user")
@@ -86,14 +87,11 @@ func (u *UserStorage) GetUserByID(ctx context.Context, id int) (domain.User, err
 }
 
 func (u *UserStorage) GetUserByUsername(ctx context.Context, username string) (domain.User, error) {
-	logger := zerolog.New(os.Stdout).With().Timestamp().Str("func_name", "repository.GetUserByUsername").Logger()
 	var dbUser User
-
 	if err := u.db.GetContext(ctx, &dbUser, `
-		SELECT id, full_name, username, password, role, created_at, updated_at 
+		SELECT id, full_name, user_name, password, role, created_at, update_at 
 		FROM users
-		WHERE username = $1`, username); err != nil {
-		logger.Err(err).Msg("error selecting user")
+		WHERE user_name = $1`, username); err != nil {
 		return domain.User{}, u.translateError(err)
 	}
 

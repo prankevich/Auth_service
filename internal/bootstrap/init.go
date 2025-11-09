@@ -1,9 +1,11 @@
 package bootstrap
 
 import (
+	"github.com/prankevich/Auth_service/pkg/notification"
+	"net/http"
+
 	"github.com/prankevich/Auth_service/internal/config"
 	"github.com/prankevich/Auth_service/internal/usecase"
-	"net/http"
 
 	http2 "github.com/prankevich/Auth_service/internal/adapter/driving/http"
 
@@ -35,9 +37,7 @@ func initDB(cfg config.Postgres) (*sqlx.DB, error) {
 func initHTTPService(
 	cfg *config.Config,
 	uc *usecase.UseCases,
+	producer notification.Producer,
 ) *http.Server {
-	return http2.New(
-		cfg,
-		uc,
-	)
+	return http2.New(cfg, uc, producer)
 }

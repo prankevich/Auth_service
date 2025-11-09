@@ -3,6 +3,7 @@ package usercreater
 import (
 	"context"
 	"errors"
+
 	"github.com/prankevich/Auth_service/internal/config"
 	"github.com/prankevich/Auth_service/internal/domain"
 	"github.com/prankevich/Auth_service/internal/errs"

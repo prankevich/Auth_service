@@ -2,6 +2,7 @@ package pkg
 
 import (
 	"fmt"
+
 	"github.com/prankevich/Auth_service/internal/domain"
 
 	"os"

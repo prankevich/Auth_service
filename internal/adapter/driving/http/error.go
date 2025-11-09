@@ -2,8 +2,9 @@ package http
 
 import (
 	"errors"
-	"github.com/prankevich/Auth_service/internal/errs"
 	"net/http"
+
+	"github.com/prankevich/Auth_service/internal/errs"
 
 	"github.com/gin-gonic/gin"
 )

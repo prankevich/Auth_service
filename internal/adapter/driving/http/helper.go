@@ -2,9 +2,10 @@ package http
 
 import (
 	"errors"
+	"strings"
+
 	"github.com/prankevich/Auth_service/internal/domain"
 	"github.com/prankevich/Auth_service/pkg"
-	"strings"
 
 	"github.com/gin-gonic/gin"
 )
@@ -38,7 +39,7 @@ func (s *Server) generateNewTokenPair(userID int, userRole domain.Role) (string,
 	}
 
 	refreshToken, err := pkg.GenerateToken(userID,
-		s.cfg.AuthParams.AccessTokenTllMinutes,
+		s.cfg.AuthParams.RefreshTokenTllDays,
 		userRole, true)
 	if err != nil {
 		return "", "", err

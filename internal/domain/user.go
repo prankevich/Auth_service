@@ -10,6 +10,7 @@ type User struct {
 	Role      Role
 	CreatedAt time.Time
 	UpdatedAt time.Time
+	Email     string
 }
 
 type Role string
